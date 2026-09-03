@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ onExplorePortfolio }) => {
                 className="relative z-10 overflow-hidden bg-[#EDE6DC] shadow-sm rounded-tl-[150px] sm:rounded-tl-[190px] rounded-tr-[28px] rounded-br-[130px] sm:rounded-br-[170px] rounded-bl-[20px]"
               >
                 <img
-                  src={`${import.meta.env.BASE_URL}hero-image-FINAL.png`}
+                  src={`${import.meta.env.BASE_URL}hero-UPDATE.png`}
                   alt="Beauty by Liyana signature bridal and editorial makeup look"
                   loading="eager"
                   decoding="async"
