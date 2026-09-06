@@ -1,9 +1,13 @@
 import React from 'react';
-import { Instagram } from 'lucide-react';
+import { Instagram, Mail, MessageCircle } from 'lucide-react';
 import { SITE_CONFIG } from '../data/content';
 import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
+  const cleanPhone = SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, '');
+  const defaultMsg = encodeURIComponent("Hi Liyana, I'd love to enquire about booking a makeup appointment.");
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${cleanPhone}&text=${defaultMsg}`;
+
   return (
     <footer id="editorial-footer" className="bg-[#171615] text-[#FAF8F5] pt-20 pb-12 border-t border-[#292524]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -29,47 +33,50 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Social & Find Liyana (5 cols) */}
-          <div className="md:col-span-5 lg:col-span-4 flex flex-col justify-between h-full items-center md:items-start text-center md:text-left space-y-8 md:space-y-0">
-            {/* Instagram Section */}
-            <div className="pt-0 md:pt-1.5 flex justify-center md:justify-start w-full">
+          {/* Social & Contact Icons (5 cols) */}
+          <div className="md:col-span-5 lg:col-span-4 flex flex-col justify-start items-center md:items-end w-full pt-1 md:pt-2 text-center md:text-right">
+            {/* FIND LIYANA heading above icons */}
+            <span
+              id="footer-find-liyana"
+              className="text-[10px] uppercase tracking-[0.3em] text-[#8C8275] font-medium mb-3.5 block"
+            >
+              FIND LIYANA
+            </span>
+
+            {/* Horizontal list of CTA icons */}
+            <div
+              id="footer-icons-list"
+              className="flex items-center gap-6 text-[#C9BFB1]"
+              aria-label="Social and contact links"
+            >
               <a
-                href={SITE_CONFIG.instagramUrl}
+                id="footer-cta-instagram"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center md:justify-start space-x-2 text-xs uppercase tracking-[0.2em] text-[#FAF8F5] hover:text-[#D6CEC3] transition-colors"
+                className="text-[#C9BFB1] hover:text-[#FAF8F5] transition-colors p-1"
+                aria-label="Instagram"
               >
-                <Instagram className="w-4 h-4 text-[#C9BFB1]" />
-                <span className="font-medium">Instagram: {SITE_CONFIG.instagram}</span>
+                <Instagram className="w-5 h-5 stroke-[1.5]" />
               </a>
-            </div>
-
-            {/* Find Liyana Section */}
-            <div className="space-y-3 pt-0 md:pt-10 flex flex-col items-center md:items-start text-center md:text-left w-full">
-              <span className="text-[10px] uppercase tracking-[0.3em] text-[#8C8275] font-medium block">
-                FIND LIYANA
-              </span>
-              
-              <div className="space-y-2 text-xs text-[#D6CEC3] font-light">
-                <p>
-                  <a
-                    href={`mailto:${SITE_CONFIG.email}`}
-                    className="hover:text-[#FAF8F5] transition-colors"
-                  >
-                    {SITE_CONFIG.email}
-                  </a>
-                </p>
-                <p>
-                  <a
-                    href={`https://api.whatsapp.com/send?phone=${SITE_CONFIG.whatsappNumber.replace(/[^0-9]/g, '')}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#FAF8F5] transition-colors"
-                  >
-                    {SITE_CONFIG.whatsappDisplay}
-                  </a>
-                </p>
-              </div>
+              <a
+                id="footer-cta-email"
+                href="mailto:bearbuildsweb@gmail.com"
+                className="text-[#C9BFB1] hover:text-[#FAF8F5] transition-colors p-1"
+                aria-label="Email bearbuildsweb@gmail.com"
+              >
+                <Mail className="w-5 h-5 stroke-[1.5]" />
+              </a>
+              <a
+                id="footer-cta-chat"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#C9BFB1] hover:text-[#FAF8F5] transition-colors p-1"
+                aria-label="WhatsApp Chat"
+              >
+                <MessageCircle className="w-5 h-5 stroke-[1.5]" />
+              </a>
             </div>
           </div>
 
